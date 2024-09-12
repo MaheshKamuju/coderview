@@ -4,10 +4,12 @@ pipeline {
     parameters { choice(name: 'DEPLOY_STAGE', choices: ['apply', 'destroy', 'plan'], description: 'select the action') }
     stages {
         stage('create a folder'){
-            sh '''  
+            steps{
+                sh '''  
                     mkdir terra
                     cd terra
-            '''
+                '''
+            }
         }
         stage('TF init') {
             steps {
