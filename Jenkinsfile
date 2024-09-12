@@ -1,15 +1,8 @@
 pipeline {
     agent any
     options { buildDiscarder(logRotator(numToKeepStr: '10')) }
-    parameters { choice(name: 'DEPLOY_STAGE', choices: ['apply', 'destroy', 'plan'], description: 'select the action') }
+    parameters { choice(name: 'DEPLOY_STAGE', choices: ['apply', 'destroy'], description: 'select the action') }
     stages {
-        stage('create a folder'){
-            steps{
-                sh '''
-                    cd terra
-                '''
-            }
-        }
         stage('TF init') {
             steps {
                 sh 'terraform init'
