@@ -3,6 +3,12 @@ pipeline {
     options { buildDiscarder(logRotator(numToKeepStr: '10')) }
     parameters { choice(name: 'DEPLOY_STAGE', choices: ['apply', 'destroy', 'plan'], description: 'select the action') }
     stages {
+        stage('create a folder'){
+            sh '''  
+                    mkdir terra
+                    cd terra
+            '''
+        }
         stage('TF init') {
             steps {
                 sh 'terraform init'
