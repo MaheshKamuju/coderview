@@ -5,8 +5,7 @@ pipeline {
     stages {
         stage('create a folder'){
             steps{
-                sh '''  
-                    mkdir terra
+                sh '''
                     cd terra
                 '''
             }
